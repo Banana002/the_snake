@@ -178,16 +178,28 @@ def handle_keys(game_object):
 
         
 def main():
-    # Инициализация PyGame:
+    """Основной цикл игры."""
     pygame.init()
-    # Тут нужно создать экземпляры классов.
-    ...
+    screen = pygame.display.set_mode((640, 480))
+    clock = pygame.time.Clock()
+    
+    snake = Snake()
+    apple = Apple()
 
-    # while True:
-    #     clock.tick(SPEED)
+    while True:
+        clock.tick(10)
+        handle_keys(snake)
+        snake.update_direction()
+        snake.move()
+        
+        if snake.get_head_position() == apple.position:
+            snake.length += 1
+            apple.randomize_position()
 
-        # Тут опишите основную логику игры.
-        # ...
+        screen.fill((0, 0, 0))
+        snake.draw(screen)
+        apple.draw(screen)
+        pygame.display.update()
 
 
 if __name__ == '__main__':
