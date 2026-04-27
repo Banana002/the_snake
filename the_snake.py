@@ -99,6 +99,9 @@ class Apple(GameObject):
         )
 
         pygame.draw.rect(surface, self.body_color, rect)
+         rect = pygame.Rect(self.position, (20, 20))
+        pygame.draw.rect(surface, self.apple_color, rect)
+        pygame.draw.rect(surface, (93, 216, 228), rect, 1)
 
         
 def main():
